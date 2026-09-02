@@ -10,9 +10,9 @@ El framework implementa una separación rigurosa de responsabilidades mediante *
 
 ---
 
-## 📹 Video Explicativo y Guion
+## 📹 Video Explicativo + Repositorio
 - **Enlace al Video (Drive)**: [Video](https://drive.google.com/file/d/1f00RqLoOK5VpHZfnwksAPCgU4mG24oDG/view)
----
+- **Enlace del repositorio** [GitHub](https://github.com/breysijara/automation-playwright-saudemo)
 
 ## 🏛️ Estructura y Jerarquía del Proyecto
 
@@ -101,7 +101,7 @@ Playwright-SauceDemo/
 
 ```bash
 # 1. Clonar el repositorio
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/breysijara/automation-playwright-saudemo.git
 cd Playwright-SauceDemo
 
 # 2. Instalar dependencias de Node
