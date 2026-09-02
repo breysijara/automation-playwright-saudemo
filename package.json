@@ -1,0 +1,50 @@
+{
+  "name": "playwright-saucedemo-bdd-pom",
+  "version": "1.0.0",
+  "description": "Framework de Automatización E2E con Playwright, Cucumber BDD y Page Object Model para SauceDemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.js",
+    "test:smoke": "cucumber-js --config cucumber.js --tags \"@smoke\"",
+    "test:regression": "cucumber-js --config cucumber.js --tags \"@regression\"",
+    "test:auth": "cucumber-js --config cucumber.js --tags \"@auth\"",
+    "test:e2e": "cucumber-js --config cucumber.js --tags \"@e2e\"",
+    "test:boundary": "cucumber-js --config cucumber.js --tags \"@boundary\"",
+    "test:qa": "cross-env TEST_ENV=qa cucumber-js --config cucumber.js",
+    "test:prod": "cross-env TEST_ENV=prod cucumber-js --config cucumber.js --tags \"@smoke\"",
+    "test:headed": "cross-env HEADLESS=false cucumber-js --config cucumber.js",
+    "test:debug": "cross-env PWDEBUG=1 cucumber-js --config cucumber.js",
+    "test:debug:auth": "cross-env PWDEBUG=1 cucumber-js features/01_auth.feature",
+    "test:debug:e2e": "cross-env PWDEBUG=1 cucumber-js features/02_e2e_purchase.feature",
+    "report": "ts-node --files src/utils/reportGenerator.ts",
+    "test:report": "npm run test; npm run report",
+    "lint": "npx tsc --noEmit"
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "bdd",
+    "gherkin",
+    "pom",
+    "page-object-model",
+    "typescript",
+    "saucedemo",
+    "qa-automation"
+  ],
+  "author": "Automation Engineer",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@playwright/test": "^1.49.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.17.10",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "fs-extra": "^11.2.0",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "playwright": "^1.49.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "winston": "^3.17.0"
+  }
+}

@@ -1,0 +1,83 @@
+name: E2E Test Suite - Multi-Environment & CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Ambiente objetivo de pruebas"
+        required: true
+        default: "qa"
+        type: choice
+        options:
+          - qa
+          - prod
+      suite_type:
+        description: "Tipo de suite a ejecutar"
+        required: true
+        default: "regression"
+        type: choice
+        options:
+          - smoke
+          - regression
+          - full
+
+jobs:
+  e2e-tests:
+    name: "Run E2E Tests on [${{ inputs.environment || 'qa' }}]"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ inputs.environment || 'qa' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Execute E2E Tests on Target Environment
+        run: |
+          if [ "${{ inputs.suite_type }}" = "smoke" ] || [ "${{ inputs.environment }}" = "prod" ]; then
+            npm run test:smoke
+          elif [ "${{ inputs.suite_type }}" = "regression" ]; then
+            npm run test:regression
+          else
+            npm test
+          fi
+        env:
+          TEST_ENV: ${{ inputs.environment || 'qa' }}
+          HEADLESS: "true"
+          BROWSER: "chromium"
+          # Secretos asociados al ambiente en GitHub Secrets
+          SAUCE_STANDARD_USER: ${{ secrets.SAUCE_STANDARD_USER }}
+          SAUCE_LOCKED_USER: ${{ secrets.SAUCE_LOCKED_USER }}
+          SAUCE_PROBLEM_USER: ${{ secrets.SAUCE_PROBLEM_USER }}
+          SAUCE_PERFORMANCE_USER: ${{ secrets.SAUCE_PERFORMANCE_USER }}
+          SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
+
+      - name: Generate HTML Report
+        if: always()
+        run: npm run report
+
+      - name: Publish Test Report & Evidences
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-report-${{ inputs.environment || 'qa' }}
+          path: |
+            reports/
+            logs/
+          retention-days: 14

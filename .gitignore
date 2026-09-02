@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+dist/
+
+# Variables de entorno y secretos sensibles
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Reportes y logs generados
+logs/
+reports/
+!evidencias/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# SO y Editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
