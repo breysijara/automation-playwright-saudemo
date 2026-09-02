@@ -3,10 +3,10 @@ node_modules/
 dist/
 
 # Variables de entorno y secretos sensibles
-.env
-.env.*
-.env.local
-.env.*.local
+#.env
+#.env.*
+#.env.local
+#.env.*.local
 
 # Reportes y logs generados
 logs/
