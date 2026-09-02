@@ -11,8 +11,7 @@ El framework implementa una separación rigurosa de responsabilidades mediante *
 ---
 
 ## 📹 Video Explicativo y Guion
-- **Enlace al Video (Loom / Drive)**: `[REGISTRA_TU_LINK_AQUI]`
-
+- **Enlace al Video (Drive)**: [Video](https://drive.google.com/file/d/1f00RqLoOK5VpHZfnwksAPCgU4mG24oDG/view)
 ---
 
 ## 🏛️ Estructura y Jerarquía del Proyecto
@@ -166,7 +165,7 @@ Tras la ejecución, el framework genera múltiples capas de evidencia auditable:
 
 | Historia de Usuario | Descripción | Escenarios Automatizados | Técnica de Diseño |
 | :--- | :--- | :--- | :--- |
-| **HU-1: Autenticación** | Login exitoso, usuario bloqueado y validación de errores por credenciales inválidas o incompletas (sin claves quemadas). | `01_auth.feature` (`@tc-auth-01`, `@tc-auth-02`, `@tc-auth-03`) | Tabla de Decisión & Transición de Estados |
+| **HU-1: Autenticación** | Login exitoso, usuario bloqueado y validación de errores por credenciales inválidas o incompletas. | `01_auth.feature` (`@tc-auth-01`, `@tc-auth-02`, `@tc-auth-03`) | Tabla de Decisión & Transición de Estados |
 | **HU-2: Operación Principal** | Flujo completo: Catálogo $\rightarrow$ Carrito $\rightarrow$ Checkout. Adición/remoción de productos. | `02_e2e_purchase.feature` (`@tc-e2e-01`, `@tc-e2e-02`) | Pruebas de Flujo de Negocio (Use Case) |
 | **HU-3: Verificación de Estado** | Verificación matemática de Subtotal, Impuestos (Tax) y Total, más pantalla de orden completada. | `02_e2e_purchase.feature` (`@tc-e2e-01`) | Validación de Consistencia Financiera |
 | **HU-4: Casos Negativos y Borde**| Partición de equivalencia en campos obligatorios y valores límite en checkout. | `03_checkout_boundary.feature` (`@tc-boundary-01`, `@tc-boundary-02`) | Partición de Equivalencia (EP) & Análisis de Valores Límite (BVA) |

@@ -67,7 +67,7 @@ graph TD
 | `src/fixtures/` | **Test Fixture & Dependency Injection Pattern** | `customWorld.ts`<br/>`hooks.ts` | Gestiona el ciclo de vida (`BeforeAll`, `Before`, `After`, `AfterAll`). Crea un `BrowserContext` nuevo por escenario para **aislamiento total anti-flakiness** y captura trazas/screenshots. |
 | `src/config/` | **Fail-Fast Environment Configuration** | `environment.ts`<br/>`.env.qa`, `.env.prod.example` | Detecta dinámicamente el ambiente (`QA` o `PROD`), valida que las variables existan en arranque y evita contraseñas en código TypeScript. |
 | `src/utils/` | **Cross-Cutting Utilities Pattern** | `logger.ts`<br/>`reportGenerator.ts` | Servicios transversales para logging con Winston (rotación de logs) y generación de reportes HTML enriquecidos. |
-| `docs/` | **Living Documentation Pattern** | `casos-de-prueba.md`<br/>`guion_video.md` | Matriz de trazabilidad, fichas técnicas de diseño de casos, respuestas técnicas y guion de presentación. |
+| `docs/` | **Living Documentation Pattern** | `casos-de-prueba.md`<br/> | Matriz de trazabilidad, fichas técnicas de diseño de casos, respuestas técnicas y guion de presentación. |
 | `.github/` | **Continuous Deployment Quality Gate** | `e2e-tests.yml` | Orquesta la ejecución desatendida en CI (GitHub Actions), evalúa la compuerta de calidad en QA/PROD y publica reportes descargables. |
 
 ---
